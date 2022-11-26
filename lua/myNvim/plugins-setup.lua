@@ -87,10 +87,13 @@ return packer.startup(function(use)
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	use("kdheepak/lazygit.nvim")
 
+	-- use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	-- use({ "mogulla3/autosave.nvim" })
+
 	use("folke/which-key.nvim")
-	use("folke/todo-comments.nvim")
+	-- use("folke/todo-comments.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
