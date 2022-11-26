@@ -54,8 +54,8 @@ gitsigns.setup({
 			vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
 		end
 
-		map("n", "<leader>j", ":Gitsigns next_hunk<CR>")
-		map("n", "<leader>k", ":Gitsigns prev_hunk<CR>")
+		map("n", "<leader>nh", ":Gitsigns next_hunk<CR>")
+		map("n", "<leader>ph", ":Gitsigns prev_hunk<CR>")
 		map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>")
 	end,
 })
