@@ -27,8 +27,12 @@ keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 -- vim-maximizer
 -- keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
--- -- nvim-tree
+-- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
+
+-- lazygit
+keymap.set("n", "<leader>gg", ":LazyGit<CR>") -- open lazygit in the current working directory
+keymap.set("n", "<leader>gc", ":LazyGitCurrentFile<CR>") -- open lazygit in the project root of the current file
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
