@@ -43,4 +43,4 @@ Always update and keep it more usefully.
   - [background img](https://github.com/asang24/Iterm2-config/blob/main/backgroud.jpeg)
 - Neovim 0.9+
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [nerdfonts](https://www.nerdfonts.com/font-downloads) prefer FiraCodeNerdFont-Retina & JetBrainsMonoNerdFont-Regulareovim &amp; Zsh &amp; Tmux Configuration
+- [nerdfonts](https://www.nerdfonts.com/font-downloads) prefer FiraCodeNerdFont-Retina & JetBrainsMonoNerdFont-Regulare
