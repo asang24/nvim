@@ -1,5 +1,5 @@
 return {
-	"glepnir/dashboard-nvim",
+	"nvimdev/dashboard-nvim",
 	event = "VimEnter",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -13,7 +13,7 @@ return {
 				-- limit how many projects list, action when you press key or enter it will run this action.
 				project = {
 					limit = 8,
-					-- label = '',
+					label = "",
 					action = "Telescope find_files cwd=",
 				},
 				-- footer = { "\n\n岂能尽如人意，但求无愧我心。"}, -- footer
