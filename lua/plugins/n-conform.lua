@@ -14,10 +14,7 @@ return {
 			-- notify_on_error = true,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = {
-					formatters = { "gofumpt", "goimports", "golines" },
-					run_all_formatters = true,
-				},
+				go = { "gofumpt", "goimports" },
 				json = { "prettier" },
 				yaml = { "prettier" },
 				sql = { "sql-formatter" },
