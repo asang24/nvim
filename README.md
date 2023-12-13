@@ -25,7 +25,7 @@ Always update and keep it more usefully.
 - Translation [vim-translator](https://github.com/voldikss/vim-translator)
 - Code highlighting [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Markdown preview [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
-- Project [project.nvim](https://github.com/coffebar/neovim-project)
+- Dashboard [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 - Code format [conform.nvim](https://github.com/stevearc/conform.nvim)
 - Auto-pair [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - Comment [Comment.nvim](https://github.com/numToStr/Comment.nvim)
