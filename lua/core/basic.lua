@@ -1,13 +1,18 @@
+--Color
 vim.env.TERM = "xterm-256color"
 vim.opt.termguicolors = true
 vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 vim.opt.background = "dark"
+-- vim.opt.signcolumn = "yes"
+
 vim.opt.ttyfast = true
-vim.opt.autochdir = true
+-- vim.opt.autochdir = true // 开启之后, 打开文件时会自动切换到文件所在的目录, 对telescope插件搜索文件有影响
 vim.opt.cursorline = true
 vim.opt.wrap = true
 vim.opt.number = true
 vim.opt.relativenumber = false
+
+-- Tabs & Indentation
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
@@ -15,14 +20,18 @@ vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+-- Search Settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
 vim.opt.ttimeoutlen = 0
 vim.opt.timeout = false
 vim.opt.virtualedit = "block"
 vim.opt.conceallevel = 0
 vim.opt.laststatus = 3
--- vim.opt.signcolumn = "yes"
+
+-- Backspace
+vim.opt.backspace = "indent,eol,start"
 vim.opt.list = false
 vim.opt.listchars = "tab:»·,nbsp:+,extends:→,precedes:←"
 vim.opt.cmdheight = 1
@@ -55,6 +64,10 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+-- Folding
+vim.opt.foldlevel = 20
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- Utilize Treesitter folds
 
 -- replace default diagnostic signs
 -- more:https://neovim.io/doc/user/diagnostic.html#diagnostic-signs

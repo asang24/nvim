@@ -1,6 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	-- event = "VeryLazy",
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
@@ -10,11 +9,9 @@ return {
 				async = false,
 				timeout_ms = 500,
 			},
-			-- log_level = vim.log.levels.ERROR,
-			-- notify_on_error = true,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = { "gofumpt", "goimports" },
+				go = { "gofumpt", "goimports", "golines" },
 				json = { "prettier" },
 				yaml = { "prettier" },
 				sql = { "sql-formatter" },
