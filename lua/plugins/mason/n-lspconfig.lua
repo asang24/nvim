@@ -4,7 +4,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"folke/neodev.nvim",
-		"folke/neoconf.nvim",
 		"nvimdev/lspsaga.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		{ "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach" },
@@ -12,7 +11,6 @@ return {
 	},
 	config = function()
 		require("neodev").setup()
-		require("neoconf").setup()
 		require("fidget").setup()
 		require("lsp_signature").setup({
 			bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -139,9 +137,6 @@ return {
 			keymap("<leader>co", "<cmd>Lspsaga outgoing_calls<CR>", "Show [C]allhierarchy [O]utgoing_calls")
 
 			keymap("<leader>,", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ction")
-			-- keymap("<leader>f", function()
-			--     vim.lsp.buf.format({ async = true })
-			-- end, "[F]ormat [C]ode")
 		end
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
