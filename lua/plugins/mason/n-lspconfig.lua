@@ -119,7 +119,7 @@ return {
 			keymap("gd", "<cmd>Lspsaga goto_definition<CR>", "[G]oto [D]efinition")
 			keymap("gi", "<cmd>Telescope lsp_implementations<CR>", "[G]oto [I]mplementation")
 			keymap("<leader>gd", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-			keymap("<leader>k", "<cmd>Lspsaga hover_doc<CR>", "[H]over [D]ocumentation")
+			keymap("<c-k>", "<cmd>Lspsaga hover_doc<CR>", "[H]over [D]ocumentation")
 			keymap("<leader>r", "<cmd>Lspsaga rename<CR>", "[R]eName")
 			keymap("<leader>o", "<cmd>Lspsaga outline<CR>", "[O]utline")
 			keymap("[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", "Diagnostic [J]ump [N]ext")
@@ -199,6 +199,9 @@ return {
 				runtime = { version = "LuaJIT" },
 				completion = {
 					callSnippet = "Replace",
+				},
+				codeLens = {
+					enable = true,
 				},
 				diagnostics = {
 					globals = { "vim" },

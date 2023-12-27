@@ -38,7 +38,8 @@ return {
 				files_first = false,
 			},
 			filters = {
-				dotfiles = true,
+				-- set false to show hidden files
+				dotfiles = false,
 			},
 			renderer = {
 				indent_markers = {
