@@ -5,7 +5,7 @@ return {
   config = function()
     require('conform').setup({
       format_on_save = {
-        pattern = '.lua,*.json,*.yaml,*.md,*.go,*.sql,*.sh',
+        pattern = '.lua,*.json,*.yaml,*.yml,*.md,*.go,*.sql,*.sh',
         async = false,
         timeout_ms = 500,
       },
