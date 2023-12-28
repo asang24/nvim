@@ -15,6 +15,12 @@ Always update and keep it more usefully.
 - Color scheme [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)
 - LSP and completion [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 - Mason plugin [mason.nvim](https://github.com/williamboman/mason.nvim)
+
+```bash
+    # if cant install some lsp or formatter e.g u should set npm config set strict-ssl false
+    npm config set strict-ssl false
+```
+
 - Code,snippet,auto-completion [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - Snippets [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
 - File explorer [nvim-tree.nvim](https://github.com/nvim-tree/nvim-tree.lua)

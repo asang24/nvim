@@ -150,7 +150,17 @@ return {
 				capabilities = capabilities,
 			})
 		end
-
+		nvim_lsp.yamlls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				yaml = {
+					trace = {
+						server = "verbose",
+					},
+				},
+			},
+		})
 		-- configure python lsp
 		nvim_lsp.pyright.setup({
 			capabilities = capabilities,

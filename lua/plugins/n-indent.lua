@@ -1,4 +1,4 @@
 return {
-	"echasnovski/mini.indentscope",
-	opts = {},
+  'echasnovski/mini.indentscope',
+  opts = {},
 }
