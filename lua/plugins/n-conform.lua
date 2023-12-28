@@ -3,7 +3,7 @@ return {
   lazy = true,
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    require('conform').setup {
+    require('conform').setup({
       format_on_save = {
         pattern = '.lua,*.json,*.yaml,*.md,*.go,*.sql,*.sh',
         async = false,
@@ -20,6 +20,6 @@ return {
         sql = { 'sql-formatter' },
         markdown = { 'prettierd' },
       },
-    }
+    })
   end,
 }
