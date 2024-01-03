@@ -4,7 +4,17 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
-    require('lualine').setup {
+    local function diff_source()
+      local gitsigns = vim.b.gitsigns_status_dict
+      if gitsigns then
+        return {
+          added = gitsigns.added,
+          modified = gitsigns.changed,
+          removed = gitsigns.removed,
+        }
+      end
+    end
+    require('lualine').setup({
       options = {
         theme = 'auto',
         component_separators = '|',
@@ -12,26 +22,40 @@ return {
       },
       sections = {
         lualine_a = {
-          { 'mode', separator = { left = '' }, right_padding = 2 },
+          { 'mode', icons_enabled = true, separator = { left = '' }, right_padding = 2 },
         },
-        lualine_b = { 'filename', 'branch', 'diagnostics' },
-        lualine_c = { 'fileformat' },
-        lualine_x = { '%3{codeium#GetStatusString()}' },
-        lualine_y = { 'filetype', 'progress' },
-        lualine_z = {
-          { 'location', separator = { right = '' }, left_padding = 2 },
+        lualine_b = {
+          'branch',
+          {
+            'diff',
+            symbols = { added = '+', modified = '~', removed = '-' },
+            source = diff_source,
+          },
+          {
+            'filename',
+            file_status = true,
+            path = 1,
+            symbols = { modified = ' [+]', readonly = ' ', unnamed = '', newfile = '[New]' },
+          },
         },
-      },
-      inactive_sections = {
-        lualine_a = { 'filename' },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = { 'location' },
+
+        lualine_c = { 'encoding' },
+        lualine_x = {
+          {
+            'fileformat',
+            icons_enabled = true,
+            symbols = {
+              unix = 'LF',
+              dos = 'CRLF',
+              mac = 'CR',
+            },
+          },
+        },
+        lualine_y = { '%3{codeium#GetStatusString()}' },
+        lualine_z = { { 'filetype', colored = true, icon_only = false, icon = { align = 'left' } }, 'progress' },
       },
       tabline = {},
       extensions = {},
-    }
+    })
   end,
 }
