@@ -12,14 +12,13 @@ return {
   config = function()
     require('neodev').setup()
     require('fidget').setup()
-    require('lsp_signature').setup {
+    require('lsp_signature').setup({
       bind = true, -- This is mandatory, otherwise border config won't get registered.
       handler_opts = {
         border = 'rounded',
       },
-    }
-    vim.lsp.set_log_level 'debug'
-    require('lspsaga').setup {
+    })
+    require('lspsaga').setup({
       ui = {
         border = 'single',
         devicon = true,
@@ -102,10 +101,10 @@ return {
       -- 		imp = "textDocument/implementation",
       -- 	},
       -- },
-    }
+    })
 
-    local nvim_lsp = require 'lspconfig'
-    local cmp_nvim_lsp = require 'cmp_nvim_lsp'
+    local nvim_lsp = require('lspconfig')
+    local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
     local on_attach = function(_, bufnr)
       local keymap = function(keys, func, desc)
@@ -125,67 +124,38 @@ return {
 
       keymap('pd', '<cmd>Lspsaga peek_definition<CR>', '[P]eek [D]efinition')
       keymap('gd', '<cmd>Lspsaga goto_definition<CR>', '[G]oto [D]efinition')
-      keymap(
-        'gi',
-        '<cmd>Telescope lsp_implementations<CR>',
-        '[G]oto [I]mplementation'
-      )
+      keymap('gi', '<cmd>Telescope lsp_implementations<CR>', '[G]oto [I]mplementation')
       keymap('<leader>gd', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
       keymap('<c-k>', '<cmd>Lspsaga hover_doc<CR>', '[H]over [D]ocumentation')
       keymap('<leader>r', '<cmd>Lspsaga rename<CR>', '[R]eName')
       keymap('<leader>o', '<cmd>Lspsaga outline<CR>', '[O]utline')
-      keymap(
-        '[d',
-        '<cmd>Lspsaga diagnostic_jump_next<CR>',
-        'Diagnostic [J]ump [N]ext'
-      )
-      keymap(
-        ']d',
-        '<cmd>Lspsaga diagnostic_jump_prev<CR>',
-        'Diagnostic [J]ump] [P]rev'
-      )
+      keymap('[d', '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Diagnostic [J]ump [N]ext')
+      keymap(']d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Diagnostic [J]ump] [P]rev')
       keymap(']e', function()
-        require('lspsaga.diagnostic').goto_next {
+        require('lspsaga.diagnostic').goto_next({
           severity = vim.diagnostic.severity.ERROR,
-        }
+        })
       end, 'Diagnostic jump prev')
-      keymap(
-        '<leader>sw',
-        '<cmd>Lspsaga show_workspace_diagnostics ++float<CR>',
-        '[S]how [W]orkspace diagnostics'
-      )
-      keymap(
-        '<leader>sd',
-        '<cmd>Lspsaga show_buf_diagnostics ++float<CR>',
-        '[S]how [B]uffer diagnostics'
-      )
-      keymap(
-        '<leader>ci',
-        '<cmd>Lspsaga incoming_calls<CR>',
-        'Show [C]allhierarchy [I]ncoming_calls'
-      )
-      keymap(
-        '<leader>co',
-        '<cmd>Lspsaga outgoing_calls<CR>',
-        'Show [C]allhierarchy [O]utgoing_calls'
-      )
+      keymap('<leader>sw', '<cmd>Lspsaga show_workspace_diagnostics ++float<CR>', '[S]how [W]orkspace diagnostics')
+      keymap('<leader>sd', '<cmd>Lspsaga show_buf_diagnostics ++float<CR>', '[S]how [B]uffer diagnostics')
+      keymap('<leader>ci', '<cmd>Lspsaga incoming_calls<CR>', 'Show [C]allhierarchy [I]ncoming_calls')
+      keymap('<leader>co', '<cmd>Lspsaga outgoing_calls<CR>', 'Show [C]allhierarchy [O]utgoing_calls')
 
       keymap('<leader>,', '<cmd>Lspsaga code_action<CR>', '[C]ode [A]ction')
     end
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-    capabilities.textDocument.foldingRange =
-      { dynamicRegistration = false, lineFoldingOnly = true }
+    capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
 
     -- configure other lsp
     local servers = { 'bashls', 'jsonls', 'sqlls' }
     for _, lsp in ipairs(servers) do
-      nvim_lsp[lsp].setup {
+      nvim_lsp[lsp].setup({
         on_attach = on_attach,
         capabilities = capabilities,
-      }
+      })
     end
-    nvim_lsp.yamlls.setup {
+    nvim_lsp.yamlls.setup({
       on_attach = on_attach,
       capabilities = capabilities,
       settings = {
@@ -195,14 +165,14 @@ return {
           },
         },
       },
-    }
+    })
     -- configure python lsp
-    nvim_lsp.pyright.setup {
+    nvim_lsp.pyright.setup({
       capabilities = capabilities,
       on_attach = on_attach,
-    }
+    })
     -- configure golang lsp
-    nvim_lsp.gopls.setup {
+    nvim_lsp.gopls.setup({
       on_attach = on_attach,
       capabilities = capabilities,
       root_dir = nvim_lsp.util.root_pattern('go.work', 'go.mod', '.git'),
@@ -228,7 +198,7 @@ return {
           staticcheck = true,
         },
       },
-    }
+    })
     -- vim.api.nvim_create_autocmd("BufWritePre", {
     -- 	pattern = "*.go",
     -- 	callback = function()
@@ -261,7 +231,7 @@ return {
         },
       },
     }
-    nvim_lsp.lua_ls.setup {
+    nvim_lsp.lua_ls.setup({
       on_attach = function(client, bufnr)
         client.server_capabilities.document_formatting = false
         client.server_capabilities.document_range_formatting = false
@@ -269,6 +239,6 @@ return {
       end,
       settings = settings,
       capabilities = capabilities,
-    }
+    })
   end,
 }

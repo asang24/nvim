@@ -10,7 +10,7 @@ return {
     },
   },
   config = function()
-    require('telescope').setup {
+    require('telescope').setup({
       extensions = {
         fzf = {
           fuzzy = true, -- false will only do exact matching
@@ -20,12 +20,12 @@ return {
           -- the default case_mode is "smart_case"
         },
       },
-    }
-    local builtin = require 'telescope.builtin'
+    })
+    local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader>f', builtin.find_files, {})
     vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
     vim.keymap.set('n', '<leader>k', builtin.keymaps, {})
-    require('telescope').load_extension 'fzf'
+    require('telescope').load_extension('fzf')
     -- require('telescope').load_extension('dap')
   end,
 }

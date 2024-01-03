@@ -17,7 +17,7 @@ return {
         go = { 'gofumpt', 'goimports', 'golines' },
         json = { 'prettierd' },
         yaml = { 'prettierd' },
-        sql = { 'sql-formatter' },
+        sql = { 'prettierd' },
         markdown = { 'prettierd' },
       },
     })
