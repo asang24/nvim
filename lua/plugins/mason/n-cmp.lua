@@ -19,21 +19,16 @@ return {
     local has_words_before = function()
       unpack = unpack or table.unpack
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-      return col ~= 0
-        and vim.api
-            .nvim_buf_get_lines(0, line - 1, line, true)[1]
-            :sub(col, col)
-            :match '%s'
-          == nil
+      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
     end
 
-    local luasnip = require 'luasnip'
-    local cmp = require 'cmp'
-    local lspkind = require 'lspkind'
+    local luasnip = require('luasnip')
+    local cmp = require('cmp')
+    local lspkind = require('lspkind')
     require('luasnip.loaders.from_vscode').lazy_load()
-    cmp.setup {
+    cmp.setup({
       formatting = {
-        format = lspkind.cmp_format {
+        format = lspkind.cmp_format({
           mode = 'symbol_text',
           menu = {
             buffer = '[Buffer]',
@@ -43,13 +38,12 @@ return {
             emoji = '[Emoji]',
             latex_symbols = '[Latex]',
           },
-        },
+        }),
       },
       enabled = function()
         if
-          require('cmp.config.context').in_treesitter_capture 'comment'
-            == true
-          or require('cmp.config.context').in_syntax_group 'Comment'
+          require('cmp.config.context').in_treesitter_capture('comment') == true
+          or require('cmp.config.context').in_syntax_group('Comment')
         then
           return false
         else
@@ -57,8 +51,20 @@ return {
         end
       end,
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+        completion = {
+          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+          col_offset = -3,
+          side_padding = 0,
+          border = 'rounded',
+          scrollbar = true,
+        },
+        documentation = {
+          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+          border = 'rounded',
+          scrollbar = true,
+        },
       },
       experimental = {
         ghost_text = false,
@@ -99,10 +105,10 @@ return {
           end
         end, { 'i', 's' }),
         -- ["<CR>"] = cmp.mapping.confirm({ select = false }),
-        ['<CR>'] = cmp.mapping.confirm {
+        ['<CR>'] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
-        },
+        }),
       },
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -113,21 +119,21 @@ return {
 
       -- 根据文件类型补全
       cmp.setup.filetype({ 'TelescopePrompt' }, {
-        sources = cmp.config.sources {
+        sources = cmp.config.sources({
           { name = 'buffer' },
-        },
+        }),
       }),
       cmp.setup.filetype({ 'vim', 'markdown' }, {
-        sources = cmp.config.sources {
+        sources = cmp.config.sources({
           { name = 'buffer' },
-        },
+        }),
       }),
       cmp.setup.filetype('gitcommit', {
-        sources = cmp.config.sources {
+        sources = cmp.config.sources({
           { name = 'buffer' },
-        },
+        }),
       }),
-    }
+    })
 
     cmp.setup.cmdline('/', {
       mapping = cmp.mapping.preset.cmdline(),
@@ -142,10 +148,10 @@ return {
 
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources {
+      sources = cmp.config.sources({
         { name = 'path' },
         { name = 'cmdline' },
-      },
+      }),
     })
   end,
 }

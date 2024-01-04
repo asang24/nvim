@@ -10,7 +10,14 @@ return {
     { 'ray-x/lsp_signature.nvim', event = 'VeryLazy' },
   },
   config = function()
-    require('neodev').setup()
+    require('neodev').setup({
+      lspconfig = true,
+      override = function(_, library)
+        library.enabled = true
+        library.plugins = true
+        library.types = true
+      end,
+    })
     require('fidget').setup()
     require('lsp_signature').setup({
       bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -93,16 +100,7 @@ return {
           exec = '<CR>',
         },
       },
-      -- finder = {
-      -- 	methods = {
-      -- 		tyd = "textDocument/typeDefinition",
-      -- 		ref = "textDocument/references",
-      -- 		def = "textDocument/definition",
-      -- 		imp = "textDocument/implementation",
-      -- 	},
-      -- },
     })
-
     local nvim_lsp = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
