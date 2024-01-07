@@ -43,8 +43,8 @@ vim.opt.updatetime = 100
 vim.g.netrw_browse_split = 3
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
-vim.opt.clipboard:append 'unnamedplus'
-vim.opt.mouse:append 'a'
+vim.opt.clipboard:append('unnamedplus')
+vim.opt.mouse:append('a')
 vim.opt.hlsearch = true
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
@@ -76,21 +76,21 @@ for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-vim.diagnostic.config {
+vim.diagnostic.config({
   signs = true,
   update_in_insert = true,
   underline = true,
   severity_sort = true,
   virtual_text = true,
-}
+})
 
 -- 光标回到上次位置
 vim.api.nvim_create_autocmd('BufReadPost', {
   pattern = '*',
   callback = function()
-    if vim.fn.line '\'"' > 0 and vim.fn.line '\'"' <= vim.fn.line '$' then
-      vim.fn.setpos('.', vim.fn.getpos '\'"')
-      vim.cmd 'silent! foldopen'
+    if vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$') then
+      vim.fn.setpos('.', vim.fn.getpos('\'"'))
+      vim.cmd('silent! foldopen')
     end
   end,
 })
