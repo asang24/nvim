@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -17,15 +18,15 @@ return {
     require('lualine').setup({
       options = {
         theme = 'auto',
-        component_separators = '|',
         section_separators = { left = '', right = '' },
+        component_separators = '|',
       },
       sections = {
         lualine_a = {
           { 'mode', icons_enabled = true, separator = { left = '' }, right_padding = 2 },
         },
         lualine_b = {
-          'branch',
+          { 'branch', icon = '' },
           {
             'diff',
             symbols = { added = '+', modified = '~', removed = '-' },
@@ -42,6 +43,28 @@ return {
         lualine_c = { 'encoding' },
         lualine_x = {
           {
+            -- Lsp server name .
+            function()
+              local msg = 'No Active Lsp'
+              local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+              local clients = vim.lsp.get_active_clients()
+              if next(clients) == nil then
+                return msg
+              end
+              for _, client in ipairs(clients) do
+                local filetypes = client.config.filetypes
+                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                  return client.name
+                end
+              end
+              return msg
+            end,
+            icon = '',
+          },
+        },
+        lualine_y = {
+          { '%3{codeium#GetStatusString()}' },
+          {
             'fileformat',
             icons_enabled = true,
             symbols = {
@@ -50,9 +73,11 @@ return {
               mac = 'CR',
             },
           },
+          { 'filetype', colored = true, icon_only = false, icon = { align = 'left' } },
         },
-        lualine_y = { '%3{codeium#GetStatusString()}' },
-        lualine_z = { { 'filetype', colored = true, icon_only = false, icon = { align = 'left' } }, 'progress' },
+        lualine_z = {
+          { 'datetime', style = '%A %H:%M' },
+        },
       },
       tabline = {},
       extensions = {},
