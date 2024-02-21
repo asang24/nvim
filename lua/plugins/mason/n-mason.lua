@@ -29,6 +29,7 @@ return {
       'json-lsp',
       'pyright',
       'gopls',
+      'rust-analyzer',
       'sqlls',
     }
     local mason_registry = require('mason-registry')
