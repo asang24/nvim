@@ -15,7 +15,7 @@ vim.opt.relativenumber = false
 -- Tabs & Indentation
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
--- vim.opt.softtabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.autoindent = true
@@ -73,38 +73,38 @@ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()' -- Utilize Treesitter folds
 -- more:https://neovim.io/doc/user/diagnostic.html#diagnostic-signs
 local signs = { Error = '󰅚', Warn = '', Hint = '', Info = '' }
 for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    local hl = 'DiagnosticSign' .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 vim.diagnostic.config({
-  signs = true,
-  update_in_insert = true,
-  underline = true,
-  severity_sort = true,
-  virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = true,
+    virtual_text = true,
 })
 
 -- 光标回到上次位置
 vim.api.nvim_create_autocmd('BufReadPost', {
-  pattern = '*',
-  callback = function()
-    if vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$') then
-      vim.fn.setpos('.', vim.fn.getpos('\'"'))
-      vim.cmd('silent! foldopen')
-    end
-  end,
+    pattern = '*',
+    callback = function()
+        if vim.fn.line('\'"') > 0 and vim.fn.line('\'"') <= vim.fn.line('$') then
+            vim.fn.setpos('.', vim.fn.getpos('\'"'))
+            vim.cmd('silent! foldopen')
+        end
+    end,
 })
 
 -- highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 -- 关闭新行注释
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-  pattern = '*',
-  callback = function()
-    vim.opt.formatoptions = vim.opt.formatoptions - { 'c', 'r', 'o' }
-  end,
+    pattern = '*',
+    callback = function()
+        vim.opt.formatoptions = vim.opt.formatoptions - { 'c', 'r', 'o' }
+    end,
 })
