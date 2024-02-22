@@ -27,8 +27,8 @@ keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
 
 -- 单行或多行移动
-keymap('v', 'K', ":m '>+1<CR>gv=gv") -- 选中后向下移动一行
-keymap('v', 'J', ":m '<-2<CR>gv=gv") -- 选中后向上移动一行
+keymap('v', 'J', ":m '>+1<CR>gv=gv") -- 选中后向下移动一行
+keymap('v', 'K', ":m '<-2<CR>gv=gv") -- 选中后向上移动一行
 
 --
 -- ctrl+s save
