@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 
 local opt = { noremap = true, silent = true }
 local function keymap(mode, lhs, rhs)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, opt)
+    vim.api.nvim_set_keymap(mode, lhs, rhs, opt)
 end
 
 -- Cancel s default function
@@ -27,8 +27,8 @@ keymap('v', '<', '<gv')
 keymap('v', '>', '>gv')
 
 -- 单行或多行移动
-keymap('v', 'J', ":m '>+1<CR>gv=gv")
-keymap('v', 'K', ":m '<-2<CR>gv=gv")
+keymap('v', 'K', ":m '>+1<CR>gv=gv") -- 选中后向下移动一行
+keymap('v', 'J', ":m '<-2<CR>gv=gv") -- 选中后向上移动一行
 
 --
 -- ctrl+s save
