@@ -13,6 +13,7 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 
 -- Tabs & Indentation
+vim.opt.cmdheight = 0
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
@@ -34,7 +35,6 @@ vim.opt.laststatus = 3
 vim.opt.backspace = 'indent,eol,start'
 vim.opt.list = false
 vim.opt.listchars = 'tab:»·,nbsp:+,extends:→,precedes:←'
-vim.opt.cmdheight = 1
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 vim.opt.colorcolumn = '0'
